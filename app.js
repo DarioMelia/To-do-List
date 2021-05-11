@@ -21,10 +21,20 @@ app.get("/", function(req, res) {
 
 app.post("/", function(req, res) {
   let item = req.body.toDoAction;
-  if (item != "") {
+
+  if (item != "" && item != undefined) {
     items.push(item);
-    res.redirect("/");
+
   }
+
+    let delBtn = req.body.del;
+   if (delBtn){
+     let delIdx = Number(delBtn);
+     items.splice(delIdx, 1);
+
+  }
+
+res.redirect("/");
 
 });
 

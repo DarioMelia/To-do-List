@@ -63,6 +63,8 @@ h1 {
 .item {
   min-height: 70px;
   align-items: center;
+  position: relative;
+
   border-bottom: 1px solid #F1F1F1;
 }
 
@@ -70,6 +72,9 @@ h1 {
   border-bottom: 0;
 }
 
+.item:hover .delete{
+  z-index: 5;
+}
 input:checked+p {
   text-decoration: line-through;
   text-decoration-color: #A683E3;
@@ -88,11 +93,16 @@ p {
   color: #00204a;
 }
 
-form {
+.addForm {
   text-align: center;
 }
 
-button {
+.delForm{
+  display: inline-block;
+  text-align: right;
+}
+
+.addBtn {
   min-height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -102,6 +112,15 @@ button {
   font-size: 30px;
   border-width: 0;
   margin-top: 10px;
+}
+
+.delete{
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  z-index: -5;
+  right: 20px;
+  bottom: 35%;
+  border: none;
 }
 
 input[type="text"] {
@@ -118,6 +137,7 @@ input[type="text"] {
 input[type="text"]:focus {
   outline: none;
   box-shadow: inset 0 -3px 0 0 #A683E3;
+  
 }
 
 ::placeholder {
