@@ -6,16 +6,11 @@ app.use(express.static("public"));
 
 app.set('view engine', 'ejs');
 
-var items = [];
+let items = [];
 
 app.get("/", function(req, res) {
-  var today = new Date();
-  var options = {
-    weekday: "long",
-    day: "numeric",
-    month: "long"
-  }
-  var day = today.toLocaleDateString("en-US", options);
+
+  let day = newDateToString("en-Us");
 
   res.render('list', {
     day: day,
@@ -25,7 +20,7 @@ app.get("/", function(req, res) {
 
 
 app.post("/", function(req, res) {
-  var item = req.body.toDoAction;
+  let item = req.body.toDoAction;
   if (item != "") {
     items.push(item);
     res.redirect("/");
@@ -36,3 +31,16 @@ app.post("/", function(req, res) {
 app.listen(3000, function() {
   console.log("Server started on port 3000")
 });
+
+
+
+
+function newDateToString(lang){
+  let today = new Date();
+  let options = {
+    weekday: "long",
+    day: "numeric",
+    month: "long"
+  }
+  return today.toLocaleDateString(lang, options);
+};
