@@ -41,6 +41,6 @@ function newDateToString(lang){
     weekday: "long",
     day: "numeric",
     month: "long"
-  }
+  };
   return today.toLocaleDateString(lang, options);
 };
