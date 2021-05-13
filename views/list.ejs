@@ -21,7 +21,7 @@
         <div class="item">
           <input type="checkbox">
           <p><%= items[i] %></p>
-  
+
           <form class="delForm" action="/" method="POST">
             <button class="delete" type="submit" name="del" value="<%= i %>">x</button>
 
@@ -31,7 +31,7 @@
         <% } %>
         </div>
         <form class="item addForm" action="/" method="POST">
-          <input type="text" name="toDoAction" placeholder="I have to do..." autocomplete="off">
+          <input type="text" name="toDoAction" placeholder="I have to do..." autocomplete="off" maxlength="25">
           <button class="addBtn" type="submit">+</button>
 
         </form>
