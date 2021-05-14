@@ -1,45 +1,40 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
-  <meta charset="utf-8">
-  <title>Todo-List</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-
-<body>
-  <div class="container">
-    <div class="box" id="heading">
-      <h1> <%= day %> </h1>
-
-    </div>
+<%- include("header"); %>                             <!-- aqúi añadimos el html dentro de header.ejs, util en páginas que repiten el head o cierto contenido -->
 
 
-      <div class="box">
-        <div class="items">
-        <% for(let i = 0; i < items.length; i++){ %>
-        <div class="item">
-          <input type="checkbox">
-          <p><%= items[i] %></p>
+<div class="container">
 
-          <form class="delForm" action="/" method="POST">
-            <button class="delete" type="submit" name="del" value="<%= i %>">x</button>
-
-          </form>
-
-        </div>
-        <% } %>
-        </div>
-        <form class="item addForm" action="/" method="POST">
-          <input type="text" name="toDoAction" placeholder="I have to do..." autocomplete="off" maxlength="25">
-          <button class="addBtn" type="submit">+</button>
-
-        </form>
-      </div>
-
+  <div class="box" id="heading">
+     <h1> <%= listTitle %> </h1>                       <!-- en EJS puedes usar <%= %> para añadir contenido al html, variables de tu codigo y las quye hayas especificado en res.render -->
   </div>
 
 
+  <div class="box">
+    <div class="items">
 
 
-</html>
+      <% for(let i = 0; i < items.length; i++){ %>                <!-- con <% %> podemos escribir js, pero solo de control(if, while, for, etc..)-->
+      <div class="item">
+        <input type="checkbox">
+        <p><%= items[i] %></p>                                    <!-- el array que hemos pasado en res.render, y que gracias al por recorremos todas las veces-->
+
+        <form class="delForm" action="/" method="POST">           <!-- form para el bottón de borrar -->
+          <input hidden type="text" name="delPage" value="<%= listTitle %>">                 <!-- input invisible que nos guarda el valor listTitle para diferenciar entre las listas -->
+          <button class="delete" type="submit" name="del" value="<%= i %>">x</button>        <!-- el botón guarda el index del for, según se vayan creando, así podemos borrarlos lueg oen app.js-->
+        </form>
+
+      </div>
+      <% } %>                                                      <!--Todo el html hasta aqúi se repite con cada interaccion del for, creando así lso elementos de la lista -->
+    </div>
+
+
+    <form class="item addForm" action="/" method="POST">
+      <input type="text" name="toDoAction" placeholder="I have to do..." autocomplete="off" maxlength="25">
+      <button class="addBtn" name="list" value="<%= listTitle %>" type="submit">+</button>
+
+    </form>
+  </div>
+
+</div>
+
+
+<%- include("footer") %>                            <!-- Añadimos el contenido en footer.ejs -->

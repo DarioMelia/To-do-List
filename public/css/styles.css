@@ -118,6 +118,10 @@ p {
   margin-top: 10px;
 }
 
+.addBtn:active{
+  box-shadow: 0 0 10px 2px #8c5ce0;
+  background-color: #8c5ce0;
+}
 .delete{
   background-color: rgba(0, 0, 0, 0);
   position: absolute;
@@ -126,6 +130,7 @@ p {
   bottom: 35%;
   border: none;
 }
+
 
 input[type="text"] {
   text-align: center;
